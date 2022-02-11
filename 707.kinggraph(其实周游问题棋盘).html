@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul,
+        li,
+        br {
+            margin: 0;
+            padding: 0
+        }
+
+        #graph {
+            margin: 20px
+        }
+
+        li {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            border: 1px solid black;
+            list-style: none;
+            float: left;
+            padding: 8px
+        }
+
+        br {
+            clear: both
+        }
+
+        button {
+            position: relative
+        }
+    </style>
+</head>
+
+<body><input type="text" id='getInput' placeholder="请输入1~10之间的数字"><button id='btn'>确认</button>
+    <ul id="graph"></ul>
+    <script>window.onload = function () { let graph = document.getElementById('graph'); let getInput = document.getElementById('getInput'); let btn = document.getElementById('btn'); let row = 5; createElem(row); createEvent(); btn.addEventListener('click', function () { row = getInput.value; if (row > 1 && row <= 10) { createElem(row) } else { alert('超出限制,请输出1~10之间的数字') } createEvent() }); function createElem(row) { let new_html_row_cow = ''; for (let i = 0; i < row * row; i++) { new_html_row_cow += '<li>' + i + '</li>'; if ((i + 1) % (row) == 0) { new_html_row_cow += '<br/>' } } graph.innerHTML = new_html_row_cow } function createEvent() { var li = document.getElementsByTagName('li'); for (let i = 0; i < li.length; i++) { li[i].onclick = null } for (let i = 0; i < li.length; i++) { li[i].onclick = function () { if (this.style.background) { this.style.background = '' } else { this.style.background = 'red' } } } } }</script>
+</body>
+
+</html>
